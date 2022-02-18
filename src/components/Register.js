@@ -66,7 +66,7 @@ const SignUpSide = () => {
     });
 
     axios
-      .post("http://172.16.59.213/auth/api/v1/register/", {
+      .post("http://34.68.150.75:8080/auth/api/v1/register/", {
         username: data.get("username"),
         password: data.get("password"),
         first_name: data.get("firstname"),
@@ -76,7 +76,14 @@ const SignUpSide = () => {
         password_confirm: data.get("cnfpassword"),
       })
       .then(function (response) {
+        console.log("user created");
         console.log(response);
+        alert("Account Created Successfully");
+      })
+      .catch(function (error) {
+        if (error.response) {
+          alert("Try again.");
+        }
       });
   };
 

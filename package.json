@@ -2,7 +2,7 @@
   "name": "sharks",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://172.16.59.213/",
+  "proxy": "http://34.68.150.75:8080",
   "dependencies": {
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",

@@ -41,12 +41,19 @@ const SignInSide = () => {
     });
 
     axios
-      .post("http://172.16.59.213/auth/api/v1/login/", {
+      .post("http://34.68.150.75:8080/auth/api/v1/login/", {
         login: data.get("username"),
         password: data.get("password"),
       })
       .then(function (response) {
         console.log(response);
+        localStorage.setItem("token", response.data.token);
+        window.location.href = "/";
+      })
+      .catch(function (error) {
+        if (error.response) {
+          alert("Login or password invalid.");
+        }
       });
   };
 
@@ -70,7 +77,16 @@ const SignInSide = () => {
             backgroundPosition: "center",
           }}
         />
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+        <Grid
+          item
+          xs={12}
+          sm={8}
+          md={5}
+          component={Paper}
+          elevation={6}
+          square
+          sx={{}}
+        >
           <Box
             sx={{
               my: 8,
