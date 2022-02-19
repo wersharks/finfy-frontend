@@ -36,7 +36,7 @@ import Projects from "layouts/dashboard/components/Projects";
 import OrdersOverview from "layouts/dashboard/components/OrdersOverview";
 
 function Dashboard() {
-  const { sales, tasks } = reportsLineChartData;
+  const { rank, profit } = reportsLineChartData;
 
   return (
     <DashboardLayout>
@@ -108,9 +108,8 @@ function Dashboard() {
               <MDBox mb={3}>
                 <ReportsBarChart
                   color="info"
-                  title="website views"
-                  description="Last Campaign Performance"
-                  date="campaign sent 2 days ago"
+                  title="Fin coin spending"
+                  date="Last 1 week"
                   chart={reportsBarChartData}
                 />
               </MDBox>
@@ -119,14 +118,9 @@ function Dashboard() {
               <MDBox mb={3}>
                 <ReportsLineChart
                   color="success"
-                  title="daily sales"
-                  description={
-                    <>
-                      (<strong>+15%</strong>) increase in today sales.
-                    </>
-                  }
-                  date="updated 4 min ago"
-                  chart={sales}
+                  title="Change in Rank"
+                  date="Last 1 week"
+                  chart={rank}
                 />
               </MDBox>
             </Grid>
@@ -134,10 +128,9 @@ function Dashboard() {
               <MDBox mb={3}>
                 <ReportsLineChart
                   color="dark"
-                  title="completed tasks"
-                  description="Last Campaign Performance"
-                  date="just updated"
-                  chart={tasks}
+                  title="Profit/Loss"
+                  date="Last 1 week"
+                  chart={profit}
                 />
               </MDBox>
             </Grid>
