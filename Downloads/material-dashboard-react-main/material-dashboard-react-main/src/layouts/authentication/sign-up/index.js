@@ -73,6 +73,7 @@ const SignUpSide = () => {
         console.log("user created");
         console.log(response);
         alert("Account Created Successfully");
+        window.location.href = "/";
       })
       .catch(function (error) {
         if (error.response) {
