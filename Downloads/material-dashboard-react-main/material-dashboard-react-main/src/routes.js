@@ -41,8 +41,10 @@ import Tables from "layouts/tables";
 import Billing from "layouts/billing";
 import Notifications from "layouts/notifications";
 import Profile from "layouts/profile";
+import Bank from "layouts/bank";
 import SignIn from "layouts/authentication/sign-in";
 import SignUp from "layouts/authentication/sign-up";
+import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 
 // @mui icons
 import Icon from "@mui/material/Icon";
@@ -87,6 +89,14 @@ const routes = [
     icon: <Icon fontSize="small">person</Icon>,
     route: "/profile",
     component: <Profile />,
+  },
+  {
+    type: "collapse",
+    name: "Bank",
+    key: "bank",
+    icon: <AccountBalanceIcon />,
+    route: "/bank",
+    component: <Bank />,
   },
   {
     type: "hidden",

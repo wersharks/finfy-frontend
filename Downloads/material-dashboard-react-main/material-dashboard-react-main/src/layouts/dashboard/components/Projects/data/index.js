@@ -35,8 +35,8 @@ import team3 from "assets/images/team-3.jpg";
 import team4 from "assets/images/team-4.jpg";
 
 export default function data() {
-  const avatars = (members) =>
-    members.map(([image, name]) => (
+  const avatars = (Type) =>
+    Type.map(([image, name]) => (
       <Tooltip key={name} title={name} placeholder="bottom">
         <MDAvatar
           src={image}
@@ -71,16 +71,16 @@ export default function data() {
 
   return {
     columns: [
-      { Header: "companies", accessor: "companies", width: "45%", align: "left" },
-      { Header: "members", accessor: "members", width: "10%", align: "left" },
-      { Header: "budget", accessor: "budget", align: "center" },
-      { Header: "completion", accessor: "completion", align: "center" },
+      { Header: "Investments", accessor: "Investments", width: "45%", align: "left" },
+      { Header: "Type", accessor: "Type", width: "10%", align: "left" },
+      { Header: "Amount", accessor: "Amount", align: "center" },
+      { Header: "Earning", accessor: "Earning", align: "center" },
     ],
 
     rows: [
       {
-        companies: <Company image={logoXD} name="Material UI XD Version" />,
-        members: (
+        Investments: <Company image={logoXD} name="Material UI XD Version" />,
+        Type: (
           <MDBox display="flex" py={1}>
             {avatars([
               [team1, "Ryan Tompson"],
@@ -90,20 +90,20 @@ export default function data() {
             ])}
           </MDBox>
         ),
-        budget: (
+        Amount: (
           <MDTypography variant="caption" color="text" fontWeight="medium">
             $14,000
           </MDTypography>
         ),
-        completion: (
+        Earning: (
           <MDBox width="8rem" textAlign="left">
             <MDProgress value={60} color="info" variant="gradient" label={false} />
           </MDBox>
         ),
       },
       {
-        companies: <Company image={logoAtlassian} name="Add Progress Track" />,
-        members: (
+        Investments: <Company image={logoAtlassian} name="Add Progress Track" />,
+        Type: (
           <MDBox display="flex" py={1}>
             {avatars([
               [team2, "Romina Hadid"],
@@ -111,20 +111,20 @@ export default function data() {
             ])}
           </MDBox>
         ),
-        budget: (
+        Amount: (
           <MDTypography variant="caption" color="text" fontWeight="medium">
             $3,000
           </MDTypography>
         ),
-        completion: (
+        Earning: (
           <MDBox width="8rem" textAlign="left">
             <MDProgress value={10} color="info" variant="gradient" label={false} />
           </MDBox>
         ),
       },
       {
-        companies: <Company image={logoSlack} name="Fix Platform Errors" />,
-        members: (
+        Investments: <Company image={logoSlack} name="Fix Platform Errors" />,
+        Type: (
           <MDBox display="flex" py={1}>
             {avatars([
               [team1, "Ryan Tompson"],
@@ -132,20 +132,20 @@ export default function data() {
             ])}
           </MDBox>
         ),
-        budget: (
+        Amount: (
           <MDTypography variant="caption" color="text" fontWeight="medium">
             Not set
           </MDTypography>
         ),
-        completion: (
+        Earning: (
           <MDBox width="8rem" textAlign="left">
             <MDProgress value={100} color="success" variant="gradient" label={false} />
           </MDBox>
         ),
       },
       {
-        companies: <Company image={logoSpotify} name="Launch our Mobile App" />,
-        members: (
+        Investments: <Company image={logoSpotify} name="Launch our Mobile App" />,
+        Type: (
           <MDBox display="flex" py={1}>
             {avatars([
               [team4, "Jessica Doe"],
@@ -155,38 +155,38 @@ export default function data() {
             ])}
           </MDBox>
         ),
-        budget: (
+        Amount: (
           <MDTypography variant="caption" color="text" fontWeight="medium">
             $20,500
           </MDTypography>
         ),
-        completion: (
+        Earning: (
           <MDBox width="8rem" textAlign="left">
             <MDProgress value={100} color="success" variant="gradient" label={false} />
           </MDBox>
         ),
       },
       {
-        companies: <Company image={logoJira} name="Add the New Pricing Page" />,
-        members: (
+        Investments: <Company image={logoJira} name="Add the New Pricing Page" />,
+        Type: (
           <MDBox display="flex" py={1}>
             {avatars([[team4, "Jessica Doe"]])}
           </MDBox>
         ),
-        budget: (
+        Amount: (
           <MDTypography variant="caption" color="text" fontWeight="medium">
             $500
           </MDTypography>
         ),
-        completion: (
+        Earning: (
           <MDBox width="8rem" textAlign="left">
             <MDProgress value={25} color="info" variant="gradient" label={false} />
           </MDBox>
         ),
       },
       {
-        companies: <Company image={logoInvesion} name="Redesign New Online Shop" />,
-        members: (
+        Investments: <Company image={logoInvesion} name="Redesign New Online Shop" />,
+        Type: (
           <MDBox display="flex" py={1}>
             {avatars([
               [team1, "Ryan Tompson"],
@@ -194,12 +194,12 @@ export default function data() {
             ])}
           </MDBox>
         ),
-        budget: (
+        Amount: (
           <MDTypography variant="caption" color="text" fontWeight="medium">
             $2,000
           </MDTypography>
         ),
-        completion: (
+        Earning: (
           <MDBox width="8rem" textAlign="left">
             <MDProgress value={40} color="info" variant="gradient" label={false} />
           </MDBox>

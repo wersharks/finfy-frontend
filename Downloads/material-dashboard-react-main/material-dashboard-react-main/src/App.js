@@ -49,6 +49,8 @@ import brandWhite from "assets/images/logo-ct.png";
 import brandDark from "assets/images/logo-ct-dark.png";
 
 export default function App() {
+  console.log(localStorage.getItem("token"));
+
   const [controller, dispatch] = useMaterialUIController();
   const {
     miniSidenav,
