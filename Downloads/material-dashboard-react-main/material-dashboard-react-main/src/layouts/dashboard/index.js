@@ -35,8 +35,23 @@ import reportsLineChartData from "layouts/dashboard/data/reportsLineChartData";
 import Projects from "layouts/dashboard/components/Projects";
 import OrdersOverview from "layouts/dashboard/components/OrdersOverview";
 
+import axios from "axios";
+import { useState } from "react";
+
 function Dashboard() {
   const { rank, profit } = reportsLineChartData;
+  const [wallet, setWallet] = useState(0);
+  axios
+    .get("http://34.68.150.75:8080/finance/balance", {
+      headers: {
+        authorization: "Token " + localStorage.getItem("token"),
+      },
+    })
+    .then((response) => {
+      console.log(localStorage.getItem("token"));
+      console.log(response.data.data);
+      setWallet(response.data.data);
+    });
 
   return (
     <DashboardLayout>
@@ -49,7 +64,7 @@ function Dashboard() {
                 color="dark"
                 icon="money"
                 title="Fin coins"
-                count={281}
+                count={wallet}
                 percentage={{
                   color: "success",
                   label: "More coins coming in 1 month",

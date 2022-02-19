@@ -17,6 +17,19 @@ import { useState } from "react";
 import axios from "axios";
 
 function Overview() {
+  const [name, setName] = useState("Name");
+  const [email, setEmail] = useState("Email");
+  axios
+    .get("http://34.68.150.75:8080/auth/api/v1/profile/", {
+      headers: {
+        authorization: "Token " + localStorage.getItem("token"),
+      },
+    })
+    .then((response) => {
+      console.log(response.data);
+      setName(response.data.first_name + " " + response.data.last_name);
+      setEmail(response.data.email);
+    });
   return (
     <DashboardLayout>
       <DashboardNavbar />
@@ -30,8 +43,8 @@ function Overview() {
                 title="profile information"
                 description="Hi, I’m Alec Thompson, Decisions: If you can’t decide, the answer is no. If two equally difficult paths, choose the one more painful in the short term (pain avoidance is creating an illusion of equality)."
                 info={{
-                  fullName: "avi",
-                  email: "alecthompson@mail.com",
+                  fullName: name,
+                  email: email,
                   location: "IND",
                 }}
                 action={{ route: "", tooltip: "Edit Profile" }}
