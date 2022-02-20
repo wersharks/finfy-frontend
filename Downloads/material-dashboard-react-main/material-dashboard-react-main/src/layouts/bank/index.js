@@ -114,6 +114,34 @@ function Bank() {
         }
       });
   };
+  const handleWithdraw = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    console.log({
+      id: data.get("withdraw"),
+    });
+    axios
+      .post(
+        "http://34.68.150.75:8080/bank/withdraw",
+        {
+          id: data.get("withdraw"),
+        },
+        {
+          headers: {
+            authorization: "Token " + localStorage.getItem("token"),
+          },
+        }
+      )
+      .then(function (response) {
+        console.log("response");
+        alert("Withdraw Successful");
+      })
+      .catch(function (error) {
+        if (error.response) {
+          alert("Try again.");
+        }
+      });
+  };
   return (
     <DashboardLayout>
       <DashboardNavbar absolute isMini />
@@ -186,31 +214,15 @@ function Bank() {
                       alignItems: "center",
                     }}
                   >
-                    <Box component="form" noValidate sx={{ mt: 1 }}>
-                      <TextField
-                        margin="normal"
-                        id="outlined-select-deposit"
-                        select
-                        halfWidth
-                        label="Select"
-                        value={deposit}
-                        onChange={handleChange}
-                        helperText="Select the amount of deposit you want to make "
-                      >
-                        {deposits.map((option) => (
-                          <MenuItem key={option.value} value={option.value}>
-                            {option.label}
-                          </MenuItem>
-                        ))}
-                      </TextField>
+                    <Box component="form" onSubmit={handleWithdraw} noValidate sx={{ mt: 1 }}>
                       <TextField
                         margin="normal"
                         required
                         fullWidth
-                        name="deposit"
-                        label="Enter Amount you want to Deposit"
+                        name="withdraw"
+                        label="Enter id of the transaction you want to withdraw"
                         type="text"
-                        id="deposit"
+                        id="withdraw"
                       />
                       <Button type="submit" fullWidth sx={{ mt: 3, mb: 2 }}>
                         Withdraw
@@ -229,6 +241,7 @@ function Bank() {
             <TableRow>
               <StyledTableCell>Deposit Type</StyledTableCell>
               <StyledTableCell>ID</StyledTableCell>
+              <StyledTableCell>Status</StyledTableCell>
               <StyledTableCell align="right">Principle</StyledTableCell>
               <StyledTableCell>Current</StyledTableCell>
               <StyledTableCell>ROI</StyledTableCell>
@@ -239,6 +252,7 @@ function Bank() {
               <StyledTableRow key={row.id}>
                 <StyledTableCell scope="row">{row.invesType}</StyledTableCell>
                 <StyledTableCell scope="row">{row.id}</StyledTableCell>
+                <StyledTableCell scope="row">{row.inveStat}</StyledTableCell>
                 <StyledTableCell scope="row">{row.principle}</StyledTableCell>
                 <StyledTableCell>{row.current}</StyledTableCell>
                 <StyledTableCell align="right">{row.roi}</StyledTableCell>
