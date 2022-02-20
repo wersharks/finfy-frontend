@@ -28,6 +28,9 @@ import MDTypography from "components/MDTypography";
 import pattern from "assets/images/illustrations/pattern-tree.svg";
 import masterCardLogo from "assets/images/logos/mastercard.png";
 
+import axios from "axios";
+import { useState } from "react";
+
 function MasterCard({ color, number, holder, expires }) {
   const numbers = [...`${number}`];
 
@@ -41,6 +44,19 @@ function MasterCard({ color, number, holder, expires }) {
   const num2 = numbers.slice(4, 8).join("");
   const num3 = numbers.slice(8, 12).join("");
   const num4 = numbers.slice(12, 16).join("");
+
+  const [name, setName] = useState("");
+
+  axios
+    .get("http://34.68.150.75:8080/auth/api/v1/profile/", {
+      headers: {
+        authorization: "Token " + localStorage.getItem("token"),
+      },
+    })
+    .then((response) => {
+      console.log(response.data);
+      setName(response.data.first_name + " " + response.data.last_name);
+    });
 
   return (
     <Card
@@ -83,7 +99,7 @@ function MasterCard({ color, number, holder, expires }) {
                 fontWeight="medium"
                 textTransform="capitalize"
               >
-                {holder}
+                {name}
               </MDTypography>
             </MDBox>
             <MDBox lineHeight={1}>

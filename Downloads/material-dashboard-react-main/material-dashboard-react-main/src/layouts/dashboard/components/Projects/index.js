@@ -13,12 +13,6 @@ Coded by www.creative-tim.com
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
-// @mui material components
-import Card from "@mui/material/Card";
-import Icon from "@mui/material/Icon";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -29,7 +23,6 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
 // Data
-import data from "layouts/dashboard/components/Projects/data";
 
 import axios from "axios";
 import { useState } from "react";
@@ -54,12 +47,8 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-function createData(type, initialAMT, finalAMT, time) {
-  return { type, initialAMT, finalAMT, time };
-}
-
 function Projects() {
-  const [history, setHistory] = useState();
+  const [history, setHistory] = useState([]);
   axios
     .get("http://34.68.150.75:8080/finance/history", {
       headers: {
@@ -67,11 +56,10 @@ function Projects() {
       },
     })
     .then((response) => {
-      setHistory(response.data);
+      console.log(response.data.data);
+      setHistory(response.data.data);
       console.log(history);
     });
-
-  const rows = [];
 
   return (
     <TableContainer component={Paper}>
@@ -85,15 +73,15 @@ function Projects() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {history.map((row) => (
             <StyledTableRow key={row.name}>
               <StyledTableCell component="th" scope="row">
                 {row.type}
               </StyledTableCell>
               <StyledTableCell component="th" scope="row">
-                {row.initialAMT}
+                {row.initialAmt}
               </StyledTableCell>
-              <StyledTableCell align="right">{row.finalAMT}</StyledTableCell>
+              <StyledTableCell align="right">{row.finalAmt}</StyledTableCell>
               <StyledTableCell align="right">{row.time}</StyledTableCell>
             </StyledTableRow>
           ))}
