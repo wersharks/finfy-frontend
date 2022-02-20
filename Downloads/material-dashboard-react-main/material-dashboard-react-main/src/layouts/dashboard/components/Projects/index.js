@@ -75,13 +75,9 @@ function Projects() {
         <TableBody>
           {history.map((row) => (
             <StyledTableRow key={row.name}>
-              <StyledTableCell component="th" scope="row">
-                {row.type}
-              </StyledTableCell>
-              <StyledTableCell component="th" scope="row">
-                {row.initialAmt}
-              </StyledTableCell>
-              <StyledTableCell align="right">{row.finalAmt}</StyledTableCell>
+              <StyledTableCell scope="row">{row.type}</StyledTableCell>
+              <StyledTableCell scope="row">{row.initialAmt}</StyledTableCell>
+              <StyledTableCell>{row.finalAmt}</StyledTableCell>
               <StyledTableCell align="right">{row.time}</StyledTableCell>
             </StyledTableRow>
           ))}
