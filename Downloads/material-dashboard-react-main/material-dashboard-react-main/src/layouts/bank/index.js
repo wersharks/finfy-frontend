@@ -133,8 +133,11 @@ function Bank() {
         }
       )
       .then(function (response) {
-        console.log("response");
-        alert("Withdraw Successful");
+        if (response.data.code === 1) {
+          alert("Withdraw Successful");
+        } else {
+          alert(response.data.message);
+        }
       })
       .catch(function (error) {
         if (error.response) {
